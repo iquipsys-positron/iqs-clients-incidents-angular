@@ -1,0 +1,45 @@
+.iqs-incidents-history-panel {
+    .iqs-incidents-history-list {
+        .iqs-ref-item {
+            width: 100%;
+            >div.md-button:first-child {
+                padding: 0px 16px 0px 24px;
+                line-height: 24px;
+            }
+            line-height: 24px;
+            .pip-pic {
+                margin: 16px 16px 16px 0px;
+                height: 40px;
+            }
+        }
+        .iqs-before:before {
+            min-height: 0 !important;
+        }
+        .iqs-map-height {
+            .incident-map {
+                height: 150px;
+            }
+        }
+        .pip-ref-list-item {
+            .pip-content.iqs-list-buttom {
+                padding-left: 56px;
+                max-width: 100%;
+            }
+        }
+        .iqs-expanded-container {
+            top: -32px;
+            position: relative;
+            margin: 0px 40px -16px 56px;
+            .iqs-width-50 {
+                width: 50%;
+            }
+        }
+        .iqs-expand-list-button.pip-pic {
+            position: relative;
+            .md-icon-button {
+                position: absolute;
+                top: -16px;
+            }
+        }
+    }
+}

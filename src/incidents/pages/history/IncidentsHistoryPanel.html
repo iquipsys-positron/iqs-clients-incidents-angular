@@ -1,0 +1,211 @@
+<md-list class="pip-ref-list iqs-incidents-history-list tp0">
+    <md-list-item class="iqs-ref-item lp16 rp16 layout-column pointer divider-bottom iqs-before" ng-repeat="item in $ctrl.collection track by item.id">
+        <div class="w-stretch {{ item.expand ? 'position-relative' : '' }}">
+            <div class="pip-divider-bottom layout-row layout-align-start-center  h72" ng-if="!item.expand">
+                <div class="pip-pic flex-fixed">
+                    <pip-avatar class="pip-face" pip-rebind="true" pip-id="item.ref.id" pip-name="item.ref.name">
+                    </pip-avatar>
+                </div>
+                <div class="layout-column layout-align-start-start flex" style="max-width: calc(100% - 88px);" ng-click="$ctrl.onExpand(item)">
+                    <div class="layout-row layout-align-start-center tp16  w-stretch">
+                        <p class="m0 text-subhead2 text-overflow w-stretch" style="line-height: 24px;">
+                            {{ item.description }}
+                        </p>
+                        <div class="tm0 m0">
+                            <md-icon md-svg-icon="icons:stop" ng-if="item.severity == $ctrl.severityHigh" class="color-error">
+                            </md-icon>
+                        </div>
+                    </div>
+                    <div class="layout-row layout-align-start-start w-stretch">
+                        <p class="text-body1 color-secondary-text text-overflow w-stretch m0">
+                            {{ item.ref.name }}
+                            <span ng-if="item.ref.name && item.time">*</span> {{ item.timeString }}
+                        </p>
+                        <div class="pip-pic m0 iqs-expand-list-button" style="margin-top: -16px;">
+                            <md-button class="md-icon-button m0 p0" aria-label="expand">
+                                <md-icon md-svg-icon="icons:chevron-down" ng-class="{'error-expand': item.expand, 'error-not-expand':  !item.expand }">
+                                </md-icon>
+                                <!--<md-icon md-svg-icon="icons:chevron-up" ng-if="item.expand" ng-class="{'error-expand': item.expand, 'error-not-expand':  !item.expand }">
+                                </md-icon>-->
+                            </md-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--expanded -->
+            <div class="iqs-ref-item-expanded layout-row layout-align-start-center pip-divider-bottom" ng-if="item.expand">
+                <div class="pip-pic flex-fixed">
+                    <pip-avatar class="pip-face" pip-rebind="true" pip-id="item.ref.id" pip-name="item.ref.name">
+                    </pip-avatar>
+                </div>
+                <div class="layout-column layout-align-start-start flex" style="max-width: calc(100% - 88px);" ng-click="$ctrl.onExpand(item)">
+                    <div class="layout-row layout-align-start-center tp16  w-stretch">
+                        <p class="m0 text-subhead2 text-overflow w-stretch" style="line-height: 24px;">
+                            {{ item.description }}
+                        </p>
+                        <div class="tm0 m0">
+                            <md-icon md-svg-icon="icons:stop" ng-if="item.severity == $ctrl.severityHigh" class="color-error">
+                            </md-icon>
+                        </div>
+                    </div>
+                    <div class="layout-row layout-align-start-start w-stretch">
+                        <p class="text-body1 color-secondary-text text-overflow w-stretch m0">
+                            <!--{{ item.object_name }} * {{ item.time | formatMiddleElapsed }}-->
+                        </p>
+                        <div class="pip-pic m0 iqs-expand-list-button">
+                            <md-button class="md-icon-button m0 p0" aria-label="expand">
+                                <md-icon md-svg-icon="icons:chevron-down" ng-class="{'error-expand': item.expand, 'error-not-expand':  !item.expand }">
+                                </md-icon>
+                                <!--<md-icon md-svg-icon="icons:chevron-up" ng-if="item.expand" ng-class="{'error-expand': item.expand, 'error-not-expand':  !item.expand }">
+                                </md-icon>-->
+                            </md-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="item.expand" class="iqs-expanded-container flex {{ $ctrl.pipMedia('gt-sm') ? 'layout-row' : 'layout-column' }}">
+               <div class="w-stretch layout-column flex">
+                    <div class="pip-ref-list-item  layout-row layout-align-start-center incident-content" ng-if="item.ref.incidentValue">
+                        <md-icon md-svg-icon="iqs:incident" class="incident-icon tm16 lm0">
+                        </md-icon>
+                        <div class="pip-content tp8 bp8 rp6">
+                            <div class="flex text-subhead1 text-overflow">
+                                {{ item.ref.incidentValue }}
+                            </div>
+                            <div class="pip-subtitle color-secondary-text tm4">
+                                {{::'INCIDENT_VALUE' | translate}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pip-ref-list-item  layout-row layout-align-start-center incident-content">
+                        <md-icon md-svg-icon="icons:time" class="incident-icon lm0">
+                        </md-icon>
+                        <div class="pip-content tp8 bp8 rp6">
+                            <div class="flex text-subhead1 text-overflow">
+                                {{ item.timeString }}
+                            </div>
+                            <div class="pip-subtitle">
+                                {{::'INCIDENT_TIME' | translate}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pip-ref-list-item  layout-row layout-align-start-center incident-content" ng-if="item.ref.ref_groups">
+                        <md-icon md-svg-icon="iqs:team" class="incident-icon tm16 lm0">
+                        </md-icon>
+                        <div class="pip-content tp8 bp8 rp6">
+                            <div class="flex text-subhead1 text-overflow">
+                                {{ item.ref.ref_groups }}
+                            </div>
+                            <div class="pip-subtitle color-secondary-text tm4">
+                                {{::'INCIDENT_GROUPS' | translate}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pip-ref-list-item  layout-row layout-align-start-center incident-content">
+                        <md-icon md-svg-icon="iqs:person" class="incident-icon tm16 lm0">
+                        </md-icon>
+                        <div class="pip-content tp8 bp8 rp6">
+                            <div class="flex text-subhead1 text-overflow">
+                                {{ item.ref.name }}
+                            </div>
+                            <div class="pip-subtitle color-secondary-text tm4">
+                                {{ item.ref.item | formatObjectSubtitle }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pip-ref-list-item  layout-row layout-align-start-center incident-content" ng-if="item.ref.assigned_name">
+                        <md-icon md-svg-icon="iqs:schedule" class="incident-icon">
+                        </md-icon>
+                        <div class="pip-content tp8 bp8">
+                            <div class="flex text-subhead1 text-overflow">
+                                {{ ::item.ref.assigned_name }}
+                            </div>
+                            <div class="pip-subtitle  color-secondary-text">
+                                {{ ::'INCIDENT_ASSIGNED' | translate }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pip-ref-list-item  layout-row layout-align-start-center incident-content">
+                        <md-icon md-svg-icon="iqs:location" class="incident-icon lm0">
+                        </md-icon>
+                        <div class="pip-content tp8 bp8">
+                            <div class="flex text-subhead1 text-overflow" ng-if="$ctrl.incidentDetails.locationName">
+                                {{ item.ref.locationName }}
+                            </div>
+                            <div class="flex text-body1 text-overflow" ng-if="!$ctrl.incidentDetails.locationName">
+                                <!-- {{ ::'INCIDENT_WHOLE_ORGANIZATION' | translate }}  -->
+                                {{ $ctrl.organizationName }}
+                            </div>
+                            <div class="pip-subtitle  color-secondary-text">
+                                {{::'INCIDENT_LOCATION' | translate}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="width: 100%; height: 150px; position: relative" ng-if="item.ref && item.ref.latitude && item.ref.longitude && item.expand">
+                        <div class="tp8 bp8">
+                            <iqs-incidents-map-panel iqs-object="item.ref" ng-click="$ctrl.openRetrospective(item)">
+                            </iqs-incidents-map-panel>
+                        </div>
+                    </div>
+
+                    <div class="incident-divider-top divider-top tm8 bm16" ng-if="item.ref.resolution"></div>
+
+                    <div class="pip-ref-list-item  layout-row layout-align-start-center incident-content" ng-if="item.ref.resolution_close">
+                        <md-icon md-svg-icon="icons:people" class="incident-icon lm0">
+                        </md-icon>
+                        <div class="pip-content tp8 bp8">
+                            <div class="flex text-subhead1 text-overflow">
+                                {{ item.ref.resolution_close }}
+                            </div>
+                            <div class="pip-subtitle  color-secondary-text">
+                                {{::'INCIDENT_RESOLUTION_ACCOUNT_CLOSE' | translate}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pip-ref-list-item  layout-row layout-align-start-center incident-content" ng-if="item.ref.resolution">
+                        <md-icon md-svg-icon="iqs:incident-res" class="incident-icon lm0">
+                        </md-icon>
+                        <div class="pip-content tp8 bp8">
+                            <div class="flex text-subhead1 text-overflow">
+                                {{ item.ref.resolution }}
+                            </div>
+                            <div class="pip-subtitle  color-secondary-text">
+                                {{::'INCIDENT_RESOLUTION' | translate}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pip-ref-list-item  layout-row layout-align-start-center incident-content" ng-if="item.ref.resolution_time">
+                        <md-icon md-svg-icon="icons:time" class="incident-icon lm0">
+                        </md-icon>
+                        <div class="pip-content tp8 bp8">
+                            <div class="flex text-subhead1 text-overflow">
+                                {{ item.ref.resolution_time }}
+                            </div>
+                            <div class="pip-subtitle  color-secondary-text">
+                                {{::'INCIDENT_RESOLUTION_CLOSE_TIME' | translate}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </md-list-item>
+    <md-list-item class="pip-ref-list-item layout-row md-list-item layout-align-start-start" md-ink-ripple ng-click="$ctrl.onChange()">
+        <div class="pip-content iqs-list-buttom">
+            <div class="text-body1 text-overflow">
+                {{ ::'INCIDENT_HISTORY_NEXT_BUTTON_OPTIONS' | translate }}
+            </div>
+        </div>
+        <div class="flex-fixed">
+            <md-icon class="m0 flex-fixed" md-svg-icon="icons:chevron-right"></md-icon>
+        </div>
+    </md-list-item>
+</md-list>

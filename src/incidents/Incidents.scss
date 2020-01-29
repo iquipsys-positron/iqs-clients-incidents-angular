@@ -1,0 +1,39 @@
+@import '../new_statistics/panels/StatisticsGridPanel';
+@import './dialogs/IncidentsResolutionDialog';
+@import './pages//IncidentsPages';
+
+.iqs-main {
+    .iqs-incidents-panel {
+        .iqs-empty {
+            .pip-empty {
+                .pip-pic {
+                    margin: 0 auto;
+                    padding-top: 24px;
+                    width: 250px !important;
+                    height: 250px !important;
+                    min-height: 250px !important;
+                }
+                .pip-actions {
+                    margin-top: 16px !important;
+                }
+                .text-title {
+                    padding: 16px
+                }
+                .text-subhead1 {
+                    padding: 16px
+                }
+            }
+        }
+    }
+}
+
+iqs-incidents-statistics-panel {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+
+.iqs-incidents-small-list {
+    max-width: calc(100% - 21px) !important;
+    min-height: 64px;
+}

@@ -1,0 +1,32 @@
+<iqs-statistics-filter-panel iqs-statistics-refresh="$ctrl.onRefreshStatistics(params)" iqs-start-date="$ctrl.startDate"
+    iqs-date-period-type="$ctrl.datePeriodType" iqs-date-label="'INCIDENT_DATE_FROM'" iqs-filter-values="$ctrl.filterValues"
+    iqs-filter-visibility="$ctrl.filterVisibility">
+</iqs-statistics-filter-panel>
+
+<md-progress-linear md-mode="indeterminate" style="position: absolute;" ng-show="$ctrl.transaction.busy() && $ctrl.state !== 'progress'"></md-progress-linear>
+
+<div class="pip-body p0" ng-if="$ctrl.state == 'data'">
+    <iqs-incidents-history-panel iqs-incidents-collection="$ctrl.incidents" iqs-change-date="$ctrl.onChangeDate(from)">
+    </iqs-incidents-history-panel>
+</div>
+
+<div class="pip-body rp0 layout-column layout-align-center-center flex " ng-if="$ctrl.state == 'empty' || $ctrl.state == 'progress'">
+    <div class="layout-column layout-align-center-center flex iqs-empty">
+        <div class="pip-empty" ng-if="$ctrl.state == 'empty'">
+            <img src="images/empty/empty.svg" class="pip-pic">
+            <div class="pip-text  bp16">
+                {{ ::'INCIDENT_HISTORY_EMPTY_TITLE' | translate }}
+                <br>
+                <br>
+            </div>
+        </div>
+
+        <div class="pip-empty" ng-if="$ctrl.state == 'progress'">
+            <img src="images/empty/progress.svg" class="pip-pic">
+            <div class="pip-text">
+                {{ ::'INCIDENT_HISTORY_LOADING_TITLE' | translate }}
+                <md-progress-linear md-mode="indeterminate" class="tm24"></md-progress-linear>
+            </div>
+        </div>
+    </div>
+</div>
