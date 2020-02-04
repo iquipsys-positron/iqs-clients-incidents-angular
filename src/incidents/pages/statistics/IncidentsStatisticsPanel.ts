@@ -84,8 +84,8 @@ class IncidentsStatisticsPanelController implements ng.IController {
         const runWhenReady = () => {
             if (this.iqsEventRulesViewModel.state === iqs.shell.States.Data) {
                 this.ruleCollection = this.iqsEventRulesViewModel.getCollection();
-                this.isPreloaded = true;
             }
+            this.isPreloaded = true;
         };
 
         if (this.iqsLoading.isDone) { runWhenReady(); }
@@ -114,7 +114,7 @@ class IncidentsStatisticsPanelController implements ng.IController {
 
     private setFilterValues() {
         this.startDate = this.$location.search()['date'] ? this.$location.search()['date'] :
-            this.filterParams && this.filterParams.fromDate.toISOString() ? this.filterParams.fromDate.toISOString() : this.iqsStatisticsDateService.getStartDate();
+            this.filterParams && this.filterParams.fromDate && this.filterParams.fromDate.toISOString() ? this.filterParams.fromDate.toISOString() : this.iqsStatisticsDateService.getStartDate();
         this.dateType = this.$location.search()['type'] ? this.$location.search()['type'] :
             this.filterParams && this.filterParams.datePeriod ? this.filterParams.datePeriod : this.iqsStatisticsDateService.getDateType();
 
