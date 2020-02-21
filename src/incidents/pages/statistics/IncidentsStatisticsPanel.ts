@@ -86,6 +86,7 @@ class IncidentsStatisticsPanelController implements ng.IController {
                 this.ruleCollection = this.iqsEventRulesViewModel.getCollection();
             }
             this.isPreloaded = true;
+            this.updateStatistics(this.filterParams);
         };
 
         if (this.iqsLoading.isDone) { runWhenReady(); }

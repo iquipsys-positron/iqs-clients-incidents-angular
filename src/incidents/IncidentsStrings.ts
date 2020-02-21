@@ -47,6 +47,8 @@
             INCIDENT_CLOSE_ALL_BUTTON: 'Close all',
             INCIDENT_CLOSE_ALL_CONFIRMATION: 'Are you sure you want to close all incidents by default resolution?',
             STATISTICS_LOADING_TITLE: 'Statistics loading...',
+            GRID_SUMM_LABEL: 'Total',
+            GRID_NO_DATA: 'No statistics data',
         });
         pipTranslateProvider.translations('ru', {
             INCIDENT_TITLE: 'Происшествия',
@@ -93,6 +95,8 @@
             INCIDENT_CLOSE_ALL_BUTTON: 'Закрыть все',
             INCIDENT_CLOSE_ALL_CONFIRMATION: 'Вы уверены, что хотите закрыть все происшествия резолюцией по умолчанию?',
             STATISTICS_LOADING_TITLE: 'Статистики загружаются...',
+            GRID_SUMM_LABEL: 'Итого',
+            GRID_NO_DATA: 'Нет статистических данных',
         });
     }
 
